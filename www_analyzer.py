@@ -28,9 +28,15 @@ while option != '0':
         elif option == '2':             
                 www_status = requests.get(link)
                 www_text = www_status.text
+                www_b_text = www_text.split('</p>')
+
                 print()
                 print('*** Zawartosc strony WWW {} ***'.format(link))
-                print(www_text)
+
+                for l in www_b_text:
+                        l = l.replace('<p>', '')
+                        print(l)
+
                 print()
         elif option == '3':
                 www_status = requests.get(link)   
@@ -44,5 +50,6 @@ while option != '0':
         else:
                 print('Podano bledna opcje!')
 
-print()
 print('*** KONIEC PROGRAMU ***')
+print()
+
